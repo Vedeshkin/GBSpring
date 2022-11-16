@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product list</title>
+    <style>
+        th, td {
+        text-align: center;
+        border-radius: 10px;
+        border-style: dotted;
+        }
+    </style>
+</head>
+<body>
+<h1>Products list</h1>
+<table>
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Cost</th>
+    </tr>
+    <tr th:each="p : ${productList}">
+        <td th:text="${p.getId()}"/>
+        <td th:text="${p.getTitle()}"/>
+        <td th:text="${#numbers.formatDecimal(p.getCost(),2,2)}"/>
+    </tr>
+</table>
+
+<button onclick="location.href='http://localhost:8080/app/new_product.html'" type="button">Add a new product</button>
+</body>
+</html>

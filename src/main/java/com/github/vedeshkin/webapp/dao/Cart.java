@@ -22,12 +22,12 @@ public class Cart {
         System.out.println("Item added to cart " + product);
         itemList.add(product);
     }
-    public void removeItemFromCardById(int id) throws ItemNotFoundException {
-        boolean exists = itemList.stream().anyMatch(s-> s.getId() == id);
+    public void removeItemFromCardById(String id) throws ItemNotFoundException {
+        boolean exists = itemList.stream().anyMatch(s-> s.getId().equals(id));
         if(!exists){
             throw new ItemNotFoundException();
         }
-        Product p  = itemList.stream().filter(s -> s.getId() == id).findFirst().get();
+        Product p  = itemList.stream().filter(s -> s.getId().equals(id)).findFirst().get();
         itemList.remove(p);
         System.out.println("Item has been removed from cart: " +p);
     }

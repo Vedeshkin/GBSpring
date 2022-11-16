@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new product</title>
+</head>
+<body>
+<form action="http://localhost:8080/app/product" method="post">
+  <label for="pname">Product name:</label><br>
+  <input type="text" id="pname" name="pname"><br>
+  <label for="pcost">Product cost:</label><br>
+  <input type="text" id="pcost" name="pcost">
+    <input type="submit" value="Create a new product">
+</form>
+</body>
+</html>
