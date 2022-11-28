@@ -1,6 +1,8 @@
 package com.github.vedeshkin.webapp.dao;
 
-import com.github.vedeshkin.webapp.dto.Product;
+import com.github.vedeshkin.webapp.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -9,26 +11,9 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Repository
-public class ProductRepository {
+public interface ProductRepository extends JpaRepository<Product, Long> {
+    List<Product> findByProductCostGreaterThan(Long cost);
+    List<Product> findByProductCostLessThan(Long cost);
+    List<Product> findByProductCostBetween(Long costMin, Long costMax);
 
-    private final List<Product> productList = new ArrayList<>();
-
-    @PostConstruct
-    private void init() {
-        for (int i = 1; i <= 5; i++) {
-            productList.add(new Product("Item_" + i, ThreadLocalRandom.current().nextDouble(1.00, 100.00)));
-        }
-    }
-
-    public Product getProductById(String id) {
-        return productList.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
-    }
-
-    public void addProduct(Product product) {
-        productList.add(product);
-    }
-
-    public List<Product> getProductList() {
-        return productList;
-    }
 }

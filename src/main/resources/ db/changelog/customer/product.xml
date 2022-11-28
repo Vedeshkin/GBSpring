@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+    <changeSet id="product" author="vedeshkin">
+        <preConditions>
+            <not>
+                <tableExists tableName="product"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="product">
+            <column name="id" type="bigserial">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="cost" type="double"/>
+        </createTable>
+    </changeSet>
+    <changeSet  author="vedeshkin"  id="populate-db">
+        <insert tableName="product">
+            <column name="name"  value="TV"/>
+            <column name="cost" value="11022"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name"  value="PC"/>
+            <column name="cost" value="11122"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name"  value="iPhone"/>
+            <column name="cost" value="99999"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name"  value="Bike"/>
+            <column name="cost" value="1999999"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name"  value="Car"/>
+            <column name="cost" value="99999"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name"  value="Router"/>
+            <column name="cost" value="13127"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name"  value="Charger"/>
+            <column name="cost" value="1099"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name"  value="Book"/>
+            <column name="cost" value="299"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
